@@ -170,7 +170,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/showcase.mp4" type="video/mp4" />
+        <source src="/showcase.mp4" type="video/mp4" />
       </video>
       <motion.div 
         style={{ opacity: overlayOpacity }}
@@ -434,7 +434,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/showcase.mp4" type="video/mp4" />
+        <source src="/showcase.mp4" type="video/mp4" />
       </video>
       <div className="relative z-20 h-full flex flex-col items-center justify-center text-white text-center">
         <h2 className="text-5xl md:text-7xl font-playfair mb-8">SOUL+CINEMA</h2>
