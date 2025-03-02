@@ -525,58 +525,113 @@ export default function Home() {
 </section>
 
       {/* About Section */}
-      <section id="about" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+     {/* About Section */}
+<section id="about" className="py-32 relative overflow-hidden">
+  <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5"></div>
+  <div className="container mx-auto px-4">
+    <div className="max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <div className="relative">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ height: '100%' }}
+              whileInView={{ height: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-zinc-900 dark:border-zinc-100"></div>
-              <Image
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop"
-                alt="About Pixelis"
-                width={600}
-                height={800}
-                className="w-full h-auto rounded-lg"
-              />
-           
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-zinc-900 dark:border-zinc-100"></div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">About sandeepod</h2>
-              <p className="text-zinc-600 dark:text-zinc-300 mb-6">
-                With over 10 years of experience in professional photography, sandeepod has developed a unique style
-                that combines technical precision with artistic vision. Specializing in portrait, event, and commercial
-                photography, our work has been featured in numerous publications and exhibitions.
-              </p>
-              <p className="text-zinc-600 dark:text-zinc-300 mb-8">
-                We believe that every moment tells a story, and our mission is to capture those stories in their most
-                authentic and beautiful form. Our approach is collaborative, working closely with clients to understand
-                their vision and bring it to life through our lens.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <span className="px-4 py-2 bg-zinc-100 dark:bg-zinc-700 rounded-full text-sm">
-                  Portrait Photography
-                </span>
-                <span className="px-4 py-2 bg-zinc-100 dark:bg-zinc-700 rounded-full text-sm">Event Coverage</span>
-                <span className="px-4 py-2 bg-zinc-100 dark:bg-zinc-700 rounded-full text-sm">
-                  Commercial Photography
-                </span>
-                <span className="px-4 py-2 bg-zinc-100 dark:bg-zinc-700 rounded-full text-sm">Fine Art</span>
-              </div>
-            </motion.div>
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="absolute inset-0 bg-zinc-100 dark:bg-zinc-800 z-10"
+            ></motion.div>
+            <Image
+              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop"
+              alt="About Sandeepod"
+              width={600}
+              height={800}
+              className="w-full h-auto rounded-lg"
+            />
+            <div className="absolute -top-4 -left-4 w-32 h-32 border-t-2 border-l-2 border-zinc-900 dark:border-zinc-100"></div>
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 border-b-2 border-r-2 border-zinc-900 dark:border-zinc-100"></div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <span className="block text-sm uppercase tracking-widest text-zinc-500 mb-4 font-mono">02 — About Us</span>
+          <h2 className="text-4xl md:text-5xl font-playfair mb-8 relative">
+            <span className="relative z-10">The Art of Visual Storytelling</span>
+            <motion.span
+              initial={{ width: 0 }}
+              whileInView={{ width: '40%' }}
+              viewport={{ once: true }}
+              className="absolute bottom-2 left-0 h-3 bg-zinc-100 dark:bg-zinc-800 -z-10"
+              transition={{ duration: 0.8 }}
+            ></motion.span>
+          </h2>
+          <div className="space-y-6">
+            <p className="text-zinc-600 dark:text-zinc-300 text-lg leading-relaxed">
+              With over 10 years of experience in professional photography, sandeepod has developed a unique style
+              that combines technical precision with artistic vision. Specializing in portrait, event, and commercial
+              photography, our work has been featured in numerous publications and exhibitions.
+            </p>
+            <p className="text-zinc-600 dark:text-zinc-300 text-lg leading-relaxed">
+              We believe that every moment tells a story, and our mission is to capture those stories in their most
+              authentic and beautiful form. Our approach is collaborative, working closely with clients to understand
+              their vision and bring it to life through our lens.
+            </p>
+          </div>
+          
+          <div className="mt-12 flex flex-wrap gap-4">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="px-6 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm"
+            >
+              Portrait Photography
+            </motion.span>
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="px-6 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm"
+            >
+              Event Coverage
+            </motion.span>
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="px-6 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm"
+            >
+              Commercial Photography
+            </motion.span>
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="px-6 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm"
+            >
+              Fine Art
+            </motion.span>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Services Section */}
       {/* Services Section */}
