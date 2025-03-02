@@ -30,7 +30,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
     // Simulate loading time
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2000)
+    }, 2500)
 
     if (isDarkMode) {
       document.documentElement.classList.add("dark")
@@ -119,7 +119,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
                   transition={{ delay: 0.3, duration: 0.8 }}
                   className="text-sm tracking-[0.3em] uppercase font-light text-zinc-500 dark:text-zinc-400 mb-2"
                 >
-                  Visual Storytelling
+              
                 </motion.p>
               </div>
               
