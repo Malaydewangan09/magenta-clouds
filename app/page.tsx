@@ -313,7 +313,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.4 }}
-      className="flex justify-center gap-12 mt-20"
+      className="flex justify-center gap-12 mt-7"
     >
      </motion.div>
   </div>
