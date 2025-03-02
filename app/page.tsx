@@ -30,6 +30,7 @@ export default function Home() {
     }
   }, [isDarkMode])
 
+  
   const services = [
     {
       title: "Portrait Photography",
