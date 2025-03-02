@@ -149,15 +149,17 @@ export default function Home() {
       </header>
       </motion.header>
       {/* Hero Section */}
-      <section 
+     {/* Hero Section */}
+{/* Hero Section */}
+<section 
   id="home" 
   ref={heroRef} 
-  className="relative h-[180vh]"  // Increased height for even smoother scroll
+  className="relative h-[180vh]"
 >
-<div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+  <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
     <motion.div 
       style={{ scale }} 
-      transition={{ duration: 2, ease: [0.43, 0.13, 0.23, 0.96] }}
+      transition={{ duration: 2.5, ease: [0.43, 0.13, 0.23, 0.96] }}
       className="absolute inset-0 z-0"
     >
       <Image
@@ -165,59 +167,84 @@ export default function Home() {
         alt="Featured photograph"
         fill
         priority
-        className="object-cover w-full h-full transition-all duration-2000"
+        className="object-cover w-full h-full brightness-90 transition-all duration-2000"
       />
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40"
+      ></motion.div>
     </motion.div>
-    <motion.div 
-      style={{ opacity }}
-      transition={{ duration: 2 }}
-      className="absolute inset-0 bg-black/30 z-10"
-    />
-    <div className="container mx-auto px-4 z-20 text-white">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ 
-          duration: 2.5, 
-          ease: [0.22, 1, 0.36, 1]
-        }}
-        className="max-w-3xl mx-auto text-center"
-      >
-        <div className="relative overflow-hidden">
-          <motion.h1 
-            style={{ x: nameLeftX }}
-            transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 font-playfair inline-block"
-          >
-            Magenta
-          </motion.h1>
-          <motion.h1 
-            style={{ x: nameRightX }}
-            transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 font-playfair inline-block ml-6"
-          >
-            Clouds
-          </motion.h1>
-        </div>
-        <motion.p 
-          style={{ y: textY }}
-          transition={{ duration: 2, ease: [0.43, 0.13, 0.23, 0.96] }}
-          className="text-xl md:text-2xl mb-8 text-zinc-100 font-light tracking-wide"
-        >
-          Photography
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+
+    <div className="container mx-auto px-4 z-20">
+      <motion.div className="max-w-[90rem] mx-auto relative">
+        <motion.div 
+          initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 1.2 }}
+          transition={{ duration: 1.2, ease: [0.25, 0.1, 0, 1] }}
+          className="text-center space-y-6"
         >
-          <ChevronDown className="h-8 w-8 mx-auto mt-12 animate-bounce opacity-70" />
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-zinc-400 tracking-[0.3em] text-sm font-light"
+          >
+            VISUAL POETRY
+          </motion.p>
+          
+          <div className="overflow-hidden py-4">
+            <motion.h1 
+              initial={{ y: 100 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1.5, ease: [0.25, 0.1, 0, 1] }}
+              className="text-7xl md:text-9xl font-playfair text-white leading-none tracking-tighter"
+            >
+              Magenta
+            </motion.h1>
+          </div>
+          
+          <div className="overflow-hidden py-4">
+            <motion.span
+              initial={{ y: 100 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1.5, delay: 0.2, ease: [0.25, 0.1, 0, 1] }}
+              className="block text-6xl md:text-8xl font-playfair text-white/90 italic font-light"
+            >
+              Clouds
+            </motion.span>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+            className="pt-8"
+          >
+            <Link 
+              href="#portfolio"
+              className="inline-flex items-center gap-4 text-white/80 hover:text-white transition-colors group"
+            >
+              <span className="h-[1px] w-8 bg-white/60 group-hover:w-12 transition-all"></span>
+              <span className="text-sm tracking-wider">EXPLORE OUR WORK</span>
+              <span className="h-[1px] w-8 bg-white/60 group-hover:w-12 transition-all"></span>
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+        >
+          <ChevronDown className="h-8 w-8 text-white/40 animate-bounce" />
         </motion.div>
       </motion.div>
     </div>
   </div>
 </section>
-
   
 <section className="py-20 bg-zinc-50 dark:bg-zinc-900">
   <div className="container mx-auto px-4">
@@ -704,7 +731,7 @@ export default function Home() {
     >
       <div className="text-center mb-20">
   <motion.div className="inline-block mb-8">
-    <span className="block text-sm uppercase tracking-widest text-zinc-500 mb-2">Let's Talk</span>
+    <span className="block text-sm uppercase tracking-widest text-zinc-500 mb-2">Let&apos;s Talk</span>
     <h2 className="text-4xl md:text-5xl font-playfair relative">
       <span className="relative z-10">Get In Touch</span>
       <motion.span
@@ -717,7 +744,7 @@ export default function Home() {
     </h2>
   </motion.div> 
 <p className="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
-          Have a story to tell? Let's create something extraordinary together.
+          Have a story to tell? Let&apos;s create something extraordinary together.
         </p>
       </div>
 
@@ -829,9 +856,9 @@ export default function Home() {
         className="mb-16 relative"
       >
         <span className="block text-sm uppercase tracking-widest text-zinc-500 mb-4">Ready to capture your story?</span>
-        <h3 className="text-6xl md:text-8xl font-playfair mb-8">Let's Create Magic</h3>
+        <h3 className="text-6xl md:text-8xl font-playfair mb-8">Let&apos;s Create Magic</h3>
         <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-          Every moment is a canvas waiting to be painted with light. Let's collaborate and turn your vision into timeless memories.
+          Every moment is a canvas waiting to be painted with light. Let&apos;s collaborate and turn your vision into timeless memories.
         </p>
         <Link 
           href="#contact" 
