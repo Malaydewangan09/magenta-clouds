@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, Camera, ChevronDown, Instagram, Mail, Menu, Moon, Sun, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -9,15 +9,14 @@ import Link from "next/link"
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
   const heroRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end end"],
   })
 
-  const headerOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1])
-
+ const headerOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1])
+ const [isLoading, setIsLoading] = useState(true)
 const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
 const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
@@ -27,20 +26,13 @@ const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 0.6]) // Be
 const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"]) // More subtle spacing
 
   useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2500)
-
     if (isDarkMode) {
       document.documentElement.classList.add("dark")
     } else {
       document.documentElement.classList.remove("dark")
     }
-    
-    return () => clearTimeout(timer)
   }, [isDarkMode])
-  
+
   
   const services = [
     {
@@ -62,82 +54,6 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
   return (
     <main className="min-h-screen">
-      {/* Loader */}
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-zinc-900"
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col items-center"
-            >
-              <div className="relative h-24 w-24 mb-12">
-                {/* Animated frame */}
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ 
-                    opacity: [0, 1, 0],
-                    scale: [0.8, 1, 0.8],
-                    rotateZ: [0, 180, 360]
-                  }}
-                  transition={{ 
-                    duration: 2.5, 
-                    repeat: Infinity,
-                    ease: "easeInOut" 
-                  }}
-                  className="absolute inset-0 border border-zinc-400 dark:border-zinc-600"
-                ></motion.div>
-                
-                {/* Inner animated element */}
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ 
-                    opacity: [0, 1, 0],
-                    scale: [0.2, 0.6, 0.2]
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5
-                  }}
-                  className="absolute inset-4 bg-zinc-200 dark:bg-zinc-700"
-                ></motion.div>
-              </div>
-              
-              {/* Text reveal animation */}
-              <div className="overflow-hidden">
-                <motion.p 
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-sm tracking-[0.3em] uppercase font-light text-zinc-500 dark:text-zinc-400 mb-2"
-                >
-              
-                </motion.p>
-              </div>
-              
-              <div className="overflow-hidden">
-                <motion.h2 
-                  initial={{ y: 40 }}
-                  animate={{ y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-                  className="text-3xl md:text-4xl font-playfair tracking-tight"
-                >
-                  Magenta Clouds
-                </motion.h2>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Mobile Menu */}
       <div
         className={`fixed inset-0 bg-white dark:bg-zinc-900 z-50 transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
@@ -236,141 +152,109 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
         </div>
       </header>
       </motion.header>
-            {/* Hero Section */}
+      {/* Hero Section */}
       <section 
-        id="home" 
-        ref={heroRef} 
-        className="relative h-[180vh]"
+  id="home" 
+  ref={heroRef} 
+  className="relative h-[180vh]"
+>
+  <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+    <motion.div 
+      style={{ scale, filter: `blur(${imageBlur}px)` }}
+      className="absolute inset-0 z-0 w-full h-full"
+    >
+      <div className="absolute inset-0 w-full h-full">
+        <iframe
+          src="https://player.vimeo.com/video/1061717081?h=661cbd3b11&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+          allow="autoplay; fullscreen; picture-in-picture"
+          className="w-screen h-screen object-cover"
+          style={{ 
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            border: 'none',
+            transform: 'scale(1.2)'
+          }}
+        ></iframe>
+      </div>
+      <motion.div 
+        style={{ opacity: overlayOpacity }}
+        className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"
+      ></motion.div>
+    </motion.div>
+
+    {/* Rest of the hero section content remains the same */}
+        {/* Rest of the hero section content */}
+        <div className="container mx-auto px-0 z-20">
+      <motion.div 
+        style={{ opacity: textOpacity }}
+        className="max-w-[90rem] mx-auto px-4 md:px-8" // Removed negative margin, added proper padding
       >
-        <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+        <div className="flex flex-col items-start text-left max-w-4xl"> {/* Added max-width for better text container */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-white/60 tracking-[0.3em] text-xs md:text-sm font-light mb-8 md:mb-12"
+          >
+            VISUAL STORYTELLING
+          </motion.p>
+
+
           <motion.div 
-            style={{ scale, filter: `blur(${imageBlur}px)` }}
-            className="absolute inset-0 z-0 w-full h-full"
+            style={{ y: textY }}
+            className="space-y-4 md:space-y-6"
           >
-            <div className="absolute inset-0 w-full h-full">
-              <iframe
-                src="https://player.vimeo.com/video/1061717081?h=661cbd3b11&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-                allow="autoplay; fullscreen; picture-in-picture"
-                className="w-screen h-screen object-cover"
-                style={{ 
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  border: 'none',
-                  transform: 'scale(1.2)'
-                }}
-              ></iframe>
-            </div>
-            <motion.div 
-              style={{ opacity: overlayOpacity }}
-              className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"
-            ></motion.div>
-          </motion.div>
-
-          {/* Hero content */}
-          <div className="container mx-auto px-4 z-20">
-            <motion.div 
-              style={{ opacity: textOpacity }}
-              className="max-w-[90rem] mx-auto -ml-8"
+            <motion.h1 
+              style={{ letterSpacing }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[7rem] font-inter font-light text-white/95 leading-[1.1] md:leading-[0.95] tracking-[-0.02em] md:tracking-[-0.04em]"
             >
-              <div className="flex flex-col items-start text-left"> 
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: "60px" }}
-                  transition={{ duration: 1, delay: 0.2 }}
-                  className="h-[1px] bg-white/60 mb-8"
-                ></motion.div>
-                
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1 }}
-                  className="text-white/60 tracking-[0.3em] text-sm font-light mb-12"
-                >
-                  VISUAL STORYTELLING
-                </motion.p>
+              Magenta
+              <motion.span 
+                style={{ opacity: textOpacity }}
+                className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-inter font-extralight mt-4 md:mt-6 text-white/80 tracking-tight"
+              >
+                Clouds
+              </motion.span>
+            </motion.h1>
 
-                <motion.div 
-                  style={{ y: textY }}
-                  className="space-y-6"
-                >
-                  <motion.h1 
-                    style={{ letterSpacing }}
-                    className="text-6xl md:text-[8rem] font-inter font-light text-white/95 leading-[0.95] tracking-[-0.04em]"
-                  >
-                    Magenta
-                    <motion.span 
-                      style={{ opacity: textOpacity }}
-                      className="block text-4xl md:text-5xl font-inter font-extralight mt-6 text-white/80 tracking-tight"
-                    >
-                      Clouds
-                    </motion.span>
-                  </motion.h1>
-                  
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="max-w-md text-white/70 text-lg font-light leading-relaxed"
-                  >
-                    Capturing moments that tell your unique story through the art of visual expression
-                  </motion.p>
-
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="pt-12"
-                  >
-                    <Link 
-                      href="#portfolio"
-                      className="inline-flex items-center gap-4 text-white/80 hover:text-white transition-all group"
-                    >
-                      <span className="h-[1px] w-12 bg-white/40 group-hover:w-24 transition-all"></span>
-                      <span className="text-sm tracking-[0.3em] uppercase font-light">Explore Work</span>
-                      <span className="h-[1px] w-12 bg-white/40 group-hover:w-24 transition-all"></span>
-                    </Link>
-                  </motion.div>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Scroll indicator */}
-          <motion.div
-            style={{ opacity: textOpacity }}
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
-          >
-            <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="flex flex-col items-center gap-4"
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="pt-8 md:pt-12"
             >
-              <span className="text-white/40 text-xs tracking-[0.3em]">SCROLL</span>
-              <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
+              <Link 
+                href="#portfolio"
+                className="inline-flex items-center gap-3 md:gap-4 text-white/80 hover:text-white transition-all group"
+              >
+                <span className="h-[1px] w-8 md:w-12 bg-white/40 group-hover:w-16 md:group-hover:w-24 transition-all"></span>
+                <span className="text-xs md:text-sm tracking-[0.3em] uppercase font-light">Explore Work</span>
+                <span className="h-[1px] w-8 md:w-12 bg-white/40 group-hover:w-16 md:group-hover:w-24 transition-all"></span>
+              </Link>
             </motion.div>
           </motion.div>
-          
-          {/* Floating elements */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.15 }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="absolute top-1/4 right-[15%] w-32 h-32 border border-white/20 rounded-full"
-            style={{ y: textY }}
-          ></motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.1 }}
-            transition={{ delay: 1.5, duration: 1 }}
-            className="absolute bottom-1/4 left-[10%] w-48 h-48 border border-white/20 rounded-full"
-            style={{ y: textY }}
-          ></motion.div>
         </div>
-      </section>
+      </motion.div>
+    </div>
+
+    <motion.div
+      style={{ opacity: textOpacity }}
+      className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
+    >
+      <motion.div 
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="flex flex-col items-center gap-4"
+      >
+        <span className="text-white/40 text-xs tracking-[0.3em]">SCROLL</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
   
 <section className="py-20 bg-zinc-50 dark:bg-zinc-900">
   <div className="container mx-auto px-4">
@@ -768,7 +652,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
       {/* Services Section */}
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white dark:bg-zinc-900 relative overflow-hidden">
+      <section id="services" className="py-28 bg-white dark:bg-zinc-900 relative overflow-hidden">
   <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5"></div>
   <div className="container mx-auto px-4">
     <div className="max-w-6xl mx-auto">
@@ -840,7 +724,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
           className="inline-block group relative overflow-hidden rounded-full"
         >
           <span className="absolute inset-0 bg-zinc-900 dark:bg-zinc-100 opacity-10 group-hover:opacity-20 transition-opacity duration-300"></span>
-          <span className="relative px-8 py-4 border border-white/20 rounded-full inline-flex items-center gap-3 group-hover:border-white/40 transition-colors duration-300">
+          <span className="relative px-8 py-4 border border-zinc-900/20 dark:border-zinc-100/20 rounded-full inline-flex items-center gap-3 group-hover:border-zinc-900/40 dark:group-hover:border-zinc-100/40 transition-colors duration-300">
             Discuss Your Project
             <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
           </span>
