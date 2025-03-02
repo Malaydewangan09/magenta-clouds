@@ -114,7 +114,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="text-2xl font-playfair font-bold relative group">
-              Sandeepod
+            
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-current transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <div className="hidden md:flex items-center space-x-8">
