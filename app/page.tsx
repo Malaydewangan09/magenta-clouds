@@ -768,7 +768,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
       {/* Services Section */}
       {/* Services Section */}
-      <section id="services" className="py-28 bg-white dark:bg-zinc-900 relative overflow-hidden">
+      <section id="services" className="py-20 bg-white dark:bg-zinc-900 relative overflow-hidden">
   <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5"></div>
   <div className="container mx-auto px-4">
     <div className="max-w-6xl mx-auto">
