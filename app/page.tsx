@@ -161,17 +161,24 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
   <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
     <motion.div 
       style={{ scale, filter: `blur(${imageBlur}px)` }}
-      className="absolute inset-0 z-0"
+      className="absolute inset-0 z-0 w-full h-full"
     >
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/showcase.mp4" type="video/mp4" />
-      </video>
+      <div className="absolute inset-0 w-full h-full">
+        <iframe
+          src="https://player.vimeo.com/video/1061717081?h=661cbd3b11&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+          allow="autoplay; fullscreen; picture-in-picture"
+          className="w-screen h-screen object-cover"
+          style={{ 
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            border: 'none',
+            transform: 'scale(1.2)'
+          }}
+        ></iframe>
+      </div>
       <motion.div 
         style={{ opacity: overlayOpacity }}
         className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"
@@ -427,15 +434,20 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
     {/* Video Section */}
     <div className="relative w-full h-[80vh] mt-20 overflow-hidden">
       <div className="absolute inset-0 bg-black/40 z-10"></div>
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/showcase.mp4" type="video/mp4" />
-      </video>
+      <iframe
+          src="https://player.vimeo.com/video/1061717081?h=661cbd3b11&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+          allow="autoplay; fullscreen; picture-in-picture"
+          className="w-screen h-screen object-cover"
+          style={{ 
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            border: 'none',
+            transform: 'scale(1.1)'
+          }}
+        ></iframe>
       <div className="relative z-20 h-full flex flex-col items-center justify-center text-white text-center">
         <h2 className="text-5xl md:text-7xl font-playfair mb-8">SOUL+CINEMA</h2>
         <p className="max-w-2xl mx-auto text-lg leading-relaxed">
