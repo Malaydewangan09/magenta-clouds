@@ -30,33 +30,6 @@ export default function Home() {
     }
   }, [isDarkMode])
 
-  const portfolioItems = [
-    {
-      id: 1,
-      title: "Architectural Series",
-      description: "Minimalist architectural photography exploring form and shadow",
-      image: "https://images.unsplash.com/photo-1551316679-9c6ae9dec224?q=80&w=2000&auto=format&fit=crop",
-    },
-    {
-      id: 2,
-      title: "Portrait Collection",
-      description: "Contemporary portrait series focusing on human expression",
-      image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=2000&auto=format&fit=crop",
-    },
-    {
-      id: 3,
-      title: "Fashion Editorial",
-      description: "High-end fashion photography for leading brands",
-      image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2000&auto=format&fit=crop",
-    },
-    {
-      id: 4,
-      title: "Product Study",
-      description: "Clean, minimal product photography with attention to detail",
-      image: "https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=2000&auto=format&fit=crop",
-    },
-  ]
-
   const services = [
     {
       title: "Portrait Photography",
