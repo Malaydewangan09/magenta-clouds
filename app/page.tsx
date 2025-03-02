@@ -236,107 +236,141 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
         </div>
       </header>
       </motion.header>
-      {/* Hero Section */}
+            {/* Hero Section */}
       <section 
-  id="home" 
-  ref={heroRef} 
-  className="relative h-[180vh]"
->
-  <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-    <motion.div 
-      style={{ scale, filter: `blur(${imageBlur}px)` }}
-      className="absolute inset-0 z-0 w-full h-full"
-    >
-      <div className="absolute inset-0 w-full h-full">
-        <iframe
-          src="https://player.vimeo.com/video/1061717081?h=661cbd3b11&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          allow="autoplay; fullscreen; picture-in-picture"
-          className="w-screen h-screen object-cover"
-          style={{ 
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            border: 'none',
-            transform: 'scale(1.2)'
-          }}
-        ></iframe>
-      </div>
-      <motion.div 
-        style={{ opacity: overlayOpacity }}
-        className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"
-      ></motion.div>
-    </motion.div>
-
-    {/* Rest of the hero section content remains the same */}
-    <div className="container mx-auto px-4 z-20">
-      <motion.div 
-        style={{ opacity: textOpacity }}
-        className="max-w-[90rem] mx-auto -ml-8" // Added negative margin
+        id="home" 
+        ref={heroRef} 
+        className="relative h-[180vh]"
       >
-        <div className="flex flex-col items-start text-left"> 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-white/60 tracking-[0.3em] text-sm font-light mb-12"
-          >
-            VISUAL STORYTELLING
-          </motion.p>
-
+        <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
           <motion.div 
-            style={{ y: textY }}
-            className="space-y-6"
+            style={{ scale, filter: `blur(${imageBlur}px)` }}
+            className="absolute inset-0 z-0 w-full h-full"
           >
-            <motion.h1 
-              style={{ letterSpacing }}
-              className="text-6xl md:text-[7rem] font-inter font-light text-white/95 leading-[0.95] tracking-[-0.04em]"
-            >
-              Magenta
-              <motion.span 
-                style={{ opacity: textOpacity }}
-                className="block text-4xl md:text-5xl font-inter font-extralight mt-6 text-white/80 tracking-tight"
-              >
-                Clouds
-              </motion.span>
-            </motion.h1>
+            <div className="absolute inset-0 w-full h-full">
+              <iframe
+                src="https://player.vimeo.com/video/1061717081?h=661cbd3b11&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+                allow="autoplay; fullscreen; picture-in-picture"
+                className="w-screen h-screen object-cover"
+                style={{ 
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  border: 'none',
+                  transform: 'scale(1.2)'
+                }}
+              ></iframe>
+            </div>
+            <motion.div 
+              style={{ opacity: overlayOpacity }}
+              className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"
+            ></motion.div>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="pt-12"
+          {/* Hero content */}
+          <div className="container mx-auto px-4 z-20">
+            <motion.div 
+              style={{ opacity: textOpacity }}
+              className="max-w-[90rem] mx-auto -ml-8"
             >
-              <Link 
-                href="#portfolio"
-                className="inline-flex items-center gap-4 text-white/80 hover:text-white transition-all group"
-              >
-                <span className="h-[1px] w-12 bg-white/40 group-hover:w-24 transition-all"></span>
-                <span className="text-sm tracking-[0.3em] uppercase font-light">Explore Work</span>
-                <span className="h-[1px] w-12 bg-white/40 group-hover:w-24 transition-all"></span>
-              </Link>
+              <div className="flex flex-col items-start text-left"> 
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "60px" }}
+                  transition={{ duration: 1, delay: 0.2 }}
+                  className="h-[1px] bg-white/60 mb-8"
+                ></motion.div>
+                
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1 }}
+                  className="text-white/60 tracking-[0.3em] text-sm font-light mb-12"
+                >
+                  VISUAL STORYTELLING
+                </motion.p>
+
+                <motion.div 
+                  style={{ y: textY }}
+                  className="space-y-6"
+                >
+                  <motion.h1 
+                    style={{ letterSpacing }}
+                    className="text-6xl md:text-[8rem] font-inter font-light text-white/95 leading-[0.95] tracking-[-0.04em]"
+                  >
+                    Magenta
+                    <motion.span 
+                      style={{ opacity: textOpacity }}
+                      className="block text-4xl md:text-5xl font-inter font-extralight mt-6 text-white/80 tracking-tight"
+                    >
+                      Clouds
+                    </motion.span>
+                  </motion.h1>
+                  
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="max-w-md text-white/70 text-lg font-light leading-relaxed"
+                  >
+                    Capturing moments that tell your unique story through the art of visual expression
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                    className="pt-12"
+                  >
+                    <Link 
+                      href="#portfolio"
+                      className="inline-flex items-center gap-4 text-white/80 hover:text-white transition-all group"
+                    >
+                      <span className="h-[1px] w-12 bg-white/40 group-hover:w-24 transition-all"></span>
+                      <span className="text-sm tracking-[0.3em] uppercase font-light">Explore Work</span>
+                      <span className="h-[1px] w-12 bg-white/40 group-hover:w-24 transition-all"></span>
+                    </Link>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            style={{ opacity: textOpacity }}
+            className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
+          >
+            <motion.div 
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-4"
+            >
+              <span className="text-white/40 text-xs tracking-[0.3em]">SCROLL</span>
+              <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
             </motion.div>
           </motion.div>
+          
+          {/* Floating elements */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.15 }}
+            transition={{ delay: 1.2, duration: 1 }}
+            className="absolute top-1/4 right-[15%] w-32 h-32 border border-white/20 rounded-full"
+            style={{ y: textY }}
+          ></motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="absolute bottom-1/4 left-[10%] w-48 h-48 border border-white/20 rounded-full"
+            style={{ y: textY }}
+          ></motion.div>
         </div>
-      </motion.div>
-    </div>
-
-    <motion.div
-      style={{ opacity: textOpacity }}
-      className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
-    >
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="flex flex-col items-center gap-4"
-      >
-        <span className="text-white/40 text-xs tracking-[0.3em]">SCROLL</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
-      </motion.div>
-    </motion.div>
-  </div>
-</section>
+      </section>
   
 <section className="py-20 bg-zinc-50 dark:bg-zinc-900">
   <div className="container mx-auto px-4">
