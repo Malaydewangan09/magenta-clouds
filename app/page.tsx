@@ -297,7 +297,8 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
             className="aspect-[4/5] relative overflow-hidden"
           >
             <Image
-              src="https://images.unsplash.com/photo-1537907690979-ee8e01276184"
+            
+              src="/images/magazines/8.jpg"
               alt="Wedding photography"
               fill
               className="object-cover"
@@ -329,7 +330,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
               className="col-span-12 md:col-span-8 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1551316679-9c6ae9dec224?q=80&w=2000&auto=format&fit=crop"
+                src="/images/magazines/2.jpeg"
                 alt="Featured photograph"
                 width={1200}
                 height={800}
@@ -343,7 +344,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
               className="col-span-12 md:col-span-4 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=2000&auto=format&fit=crop"
+                src="/images/magazines/5.jpg"
                 alt="Portrait"
                 width={600}
                 height={800}
@@ -357,7 +358,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
               className="col-span-12 md:col-span-6 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2000&auto=format&fit=crop"
+                src="/images/magazines/1.jpg"
                 alt="Fashion"
                 width={800}
                 height={600}
@@ -371,7 +372,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
               className="col-span-12 md:col-span-6 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=2000&auto=format&fit=crop"
+                src="/images/magazines/3.jpg"
                 alt="Product"
                 width={800}
                 height={600}
@@ -389,7 +390,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
               className="col-span-12 md:col-span-4 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1604537466158-719b1972feb8?q=80&w=2069&auto=format&fit=crop"
+                src="/images/magazines/9.jpg"
                 alt="Portrait"
                 width={400}
                 height={600}
@@ -417,7 +418,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
               className="col-span-12 md:col-span-3 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?q=80&w=2070&auto=format&fit=crop"
+                src="/images/magazines/7.jpg"
                 alt="Street"
                 width={300}
                 height={400}
