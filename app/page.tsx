@@ -15,12 +15,15 @@ export default function Home() {
     offset: ["start start", "end end"],
   })
 
-  const scale = useTransform(scrollYProgress, [0, 0.7], [1, 0.85])
-  const opacity = useTransform(scrollYProgress, [0.3, 0.6], [1, 0])
-  const headerOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1])
-  const nameLeftX = useTransform(scrollYProgress, [0.2, 0.6], ["0%", "-150%"])
-  const nameRightX = useTransform(scrollYProgress, [0.2, 0.6], ["0%", "150%"])
-  const textY = useTransform(scrollYProgress, [0.2, 0.5], ["0%", "100%"])
+ const headerOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1])
+
+const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
+const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+const textY = useTransform(scrollYProgress, [0, 0.3], [0, 50]) // Reduced movement
+const imageBlur = useTransform(scrollYProgress, [0, 0.5], [0, 3]) // Subtler blur
+const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 0.6]) // Better contrast
+const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"]) // More subtle spacing
 
   useEffect(() => {
     if (isDarkMode) {
@@ -110,8 +113,9 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-playfair font-bold">
+            <Link href="/" className="text-2xl font-playfair font-bold relative group">
               Sandeepod
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-current transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <div className="hidden md:flex items-center space-x-8">
               <Link href="#home" className="text-sm hover:text-zinc-500 dark:hover:text-zinc-300 transition-colors">
@@ -149,100 +153,97 @@ export default function Home() {
       </header>
       </motion.header>
       {/* Hero Section */}
-     {/* Hero Section */}
-{/* Hero Section */}
-<section 
+      <section 
   id="home" 
   ref={heroRef} 
   className="relative h-[180vh]"
 >
   <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
     <motion.div 
-      style={{ scale }} 
-      transition={{ duration: 2.5, ease: [0.43, 0.13, 0.23, 0.96] }}
+      style={{ scale, filter: `blur(${imageBlur}px)` }}
       className="absolute inset-0 z-0"
     >
-      <Image
-        src="/images/hero.jpg"
-        alt="Featured photograph"
-        fill
-        priority
-        className="object-cover w-full h-full brightness-90 transition-all duration-2000"
-      />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/showcase.mp4" type="video/mp4" />
+      </video>
       <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-        className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40"
+        style={{ opacity: overlayOpacity }}
+        className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"
       ></motion.div>
     </motion.div>
 
+    {/* Rest of the hero section content remains the same */}
     <div className="container mx-auto px-4 z-20">
-      <motion.div className="max-w-[90rem] mx-auto relative">
-        <motion.div 
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.25, 0.1, 0, 1] }}
-          className="text-center space-y-6"
-        >
+      <motion.div 
+        style={{ opacity: textOpacity }}
+        className="max-w-[90rem] mx-auto -ml-8" // Added negative margin
+      >
+        <div className="flex flex-col items-start text-left"> 
           <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-zinc-400 tracking-[0.3em] text-sm font-light"
-          >
-            VISUAL POETRY
-          </motion.p>
-          
-          <div className="overflow-hidden py-4">
-            <motion.h1 
-              initial={{ y: 100 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1.5, ease: [0.25, 0.1, 0, 1] }}
-              className="text-7xl md:text-9xl font-playfair text-white leading-none tracking-tighter"
-            >
-              Magenta
-            </motion.h1>
-          </div>
-          
-          <div className="overflow-hidden py-4">
-            <motion.span
-              initial={{ y: 100 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1.5, delay: 0.2, ease: [0.25, 0.1, 0, 1] }}
-              className="block text-6xl md:text-8xl font-playfair text-white/90 italic font-light"
-            >
-              Clouds
-            </motion.span>
-          </div>
-
-          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-            className="pt-8"
+            transition={{ duration: 1 }}
+            className="text-white/60 tracking-[0.3em] text-sm font-light mb-12"
           >
-            <Link 
-              href="#portfolio"
-              className="inline-flex items-center gap-4 text-white/80 hover:text-white transition-colors group"
-            >
-              <span className="h-[1px] w-8 bg-white/60 group-hover:w-12 transition-all"></span>
-              <span className="text-sm tracking-wider">EXPLORE OUR WORK</span>
-              <span className="h-[1px] w-8 bg-white/60 group-hover:w-12 transition-all"></span>
-            </Link>
-          </motion.div>
-        </motion.div>
+            VISUAL STORYTELLING
+          </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          <ChevronDown className="h-8 w-8 text-white/40 animate-bounce" />
-        </motion.div>
+          <motion.div 
+            style={{ y: textY }}
+            className="space-y-6"
+          >
+            <motion.h1 
+              style={{ letterSpacing }}
+              className="text-6xl md:text-[7rem] font-inter font-light text-white/95 leading-[0.95] tracking-[-0.04em]"
+            >
+              Magenta
+              <motion.span 
+                style={{ opacity: textOpacity }}
+                className="block text-4xl md:text-5xl font-inter font-extralight mt-6 text-white/80 tracking-tight"
+              >
+                Clouds
+              </motion.span>
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="pt-12"
+            >
+              <Link 
+                href="#portfolio"
+                className="inline-flex items-center gap-4 text-white/80 hover:text-white transition-all group"
+              >
+                <span className="h-[1px] w-12 bg-white/40 group-hover:w-24 transition-all"></span>
+                <span className="text-sm tracking-[0.3em] uppercase font-light">Explore Work</span>
+                <span className="h-[1px] w-12 bg-white/40 group-hover:w-24 transition-all"></span>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
     </div>
+
+    <motion.div
+      style={{ opacity: textOpacity }}
+      className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
+    >
+      <motion.div 
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="flex flex-col items-center gap-4"
+      >
+        <span className="text-white/40 text-xs tracking-[0.3em]">SCROLL</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
+      </motion.div>
+    </motion.div>
   </div>
 </section>
   
@@ -636,7 +637,7 @@ export default function Home() {
 
       {/* Services Section */}
       {/* Services Section */}
-      <section id="services" className="py-32 bg-white dark:bg-zinc-900 relative overflow-hidden">
+      <section id="services" className="py-28 bg-white dark:bg-zinc-900 relative overflow-hidden">
   <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5"></div>
   <div className="container mx-auto px-4">
     <div className="max-w-6xl mx-auto">
@@ -720,7 +721,7 @@ export default function Home() {
 
       {/* Contact Section */}
       {/* Contact Section */}
-      <section id="contact" className="py-32 bg-zinc-50 dark:bg-zinc-800/50 relative overflow-hidden">
+      <section id="contact" className="py-28 bg-zinc-50 dark:bg-zinc-800/50 relative overflow-hidden">
   <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5"></div>
   <div className="container mx-auto px-4 relative">
     <motion.div
@@ -845,10 +846,9 @@ export default function Home() {
       {/* Footer */}
       {/* Footer */}
 {/* Footer */}
-<footer className="relative pt-40 pb-20 bg-gradient-to-b from-zinc-900 via-zinc-900 to-black dark:from-zinc-950 dark:via-zinc-950 dark:to-black text-white overflow-hidden">
-  <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5 mix-blend-overlay"></div>
+<footer className="relative pt-40 pb-20 bg-gradient-to-b from-zinc-900 via-zinc-900/95 to-black dark:from-zinc-950 dark:via-zinc-950/95 dark:to-black text-white overflow-hidden backdrop-blur-sm">  <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5 mix-blend-overlay"></div>
   <div className="container mx-auto px-4">
-    <div className="flex flex-col items-center text-center mb-24">
+    <div className="flex flex-col items-center text-center mb-0">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
