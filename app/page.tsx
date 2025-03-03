@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { ArrowRight, Camera, ChevronDown, Instagram, Mail, Menu, Moon, Sun, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -15,8 +15,8 @@ export default function Home() {
     offset: ["start start", "end end"],
   })
 
- const headerOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1])
- const [isLoading, setIsLoading] = useState(true)
+const headerOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1])
+const [isLoading, setIsLoading] = useState(true)
 const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
 const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
@@ -33,6 +33,14 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
     }
   }, [isDarkMode])
 
+  useEffect(() => {
+    // Simulate loading time or wait for assets
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2500) // Adjust time as needed
+    
+    return () => clearTimeout(timer)
+  }, [])
   
   const services = [
     {
@@ -54,10 +62,83 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
   return (
     <main className="min-h-screen">
+<AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-zinc-900"
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center"
+            >
+              <div className="relative h-24 w-24 mb-12">
+                {/* Animated frame */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ 
+                    opacity: [0, 1, 0],
+                    scale: [0.8, 1, 0.8],
+                    rotateZ: [0, 180, 360]
+                  }}
+                  transition={{ 
+                    duration: 2.5, 
+                    repeat: Infinity,
+                    ease: "easeInOut" 
+                  }}
+                  className="absolute inset-0 border border-zinc-400 dark:border-zinc-600"
+                ></motion.div>
+                
+                {/* Inner animated element */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    opacity: [0, 1, 0],
+                    scale: [0.2, 0.6, 0.2]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }}
+                  className="absolute inset-4 bg-zinc-200 dark:bg-zinc-700"
+                ></motion.div>
+              </div>
+              
+              {/* Text reveal animation */}
+              <div className="overflow-hidden">
+                <motion.p 
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="text-sm tracking-[0.3em] uppercase font-light text-zinc-500 dark:text-zinc-400 mb-2"
+                >
+              
+                </motion.p>
+              </div>
+              
+              <div className="overflow-hidden">
+                <motion.h2 
+                  initial={{ y: 40 }}
+                  animate={{ y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                  className="text-3xl md:text-4xl font-playfair tracking-tight"
+                >
+                  Magenta Clouds
+                </motion.h2>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-white dark:bg-zinc-900 z-50 transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
-      >
+        className={`fixed inset-0 bg-white dark:bg-zinc-900 z-50 transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-end">
             <button onClick={() => setIsMenuOpen(false)} className="p-2">
@@ -201,7 +282,6 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
           >
             VISUAL STORYTELLING
           </motion.p>
-
 
           <motion.div 
             style={{ y: textY }}
