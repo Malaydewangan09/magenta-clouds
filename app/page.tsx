@@ -21,10 +21,10 @@ const [isLoading, setIsLoading] = useState(true)
 const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
 const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
-const textY = useTransform(scrollYProgress, [0, 0.3], [0, 50]) // Reduced movement
-const imageBlur = useTransform(scrollYProgress, [0, 0.5], [0, 3]) // Subtler blur
-const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 0.6]) // Better contrast
-const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"]) // More subtle spacing
+const textY = useTransform(scrollYProgress, [0, 0.3], [0, 50])
+const imageBlur = useTransform(scrollYProgress, [0, 0.5], [0, 3]) 
+const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 0.6])
+const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
   useEffect(() => {
 
@@ -144,12 +144,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
                 </Link>
               </div>
               <div className="flex items-center gap-6">
-                <button
-                  onClick={() => setIsDarkMode(!isDarkMode)}
-                  className="p-2 text-white/80 hover:text-white transition-colors"
-                >
-                  {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                </button>
+                
                 <button onClick={() => setIsMenuOpen(true)} className="md:hidden p-2 text-white">
                   <Menu className="h-5 w-5" />
                 </button>
