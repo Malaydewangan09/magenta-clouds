@@ -477,7 +477,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
       </section>
 
       {/* Featured Stories Section */}
-<section className="py-32 bg-[#f0ebe1]">
+<section className="py-20 bg-[#f0ebe1]">
   <div className="container mx-auto px-4">
     <div className="grid grid-cols-12 gap-12">
       <motion.div
@@ -547,7 +547,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 </section>
 
      {/* About Section */}
-<section id="about" className="py-32 relative overflow-hidden bg-[#f0ebe1]">
+<section id="about" className="py-20 relative overflow-hidden bg-[#f0ebe1]">
   <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5"></div>
   <div className="container mx-auto px-4">
     <div className="max-w-6xl mx-auto">
