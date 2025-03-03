@@ -15,7 +15,8 @@ export default function Home() {
     offset: ["start start", "end end"],
   })
 
-const headerOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1])
+const headerOpacity = useTransform(scrollYProgress, [0, 0.15, 0.2], 
+  [1, 1, 0])
 const [isLoading, setIsLoading] = useState(true)
 const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
 const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
@@ -27,13 +28,10 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
   useEffect(() => {
 
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2500)
+    document.body.style.backgroundColor = "#f0ebe1"
 
-    
     if (isDarkMode) {
-      document.documentElement.classList.add("dark")
+      document.documentElement.classList.add("edark")
     } else {
       document.documentElement.classList.remove("dark")
     }
@@ -61,151 +59,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
   return (
     <main className="min-h-screen">
 
-{isLoading && (
-        <motion.div 
-          className="fixed inset-0 z-50 bg-white flex items-center justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <div className="relative flex flex-col items-center justify-center">
-            {/* Film frame */}
-            <motion.div 
-              className="absolute"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <svg width="240" height="160" viewBox="0 0 240 160" fill="none">
-                <rect x="30" y="40" width="180" height="80" stroke="#f5f5f5" strokeWidth="1" />
-                <motion.rect 
-                  x="30" 
-                  y="40" 
-                  width="180" 
-                  height="80" 
-                  stroke="#e0e0e0" 
-                  strokeWidth="1" 
-                  strokeDasharray="240"
-                  initial={{ strokeDashoffset: 240 }}
-                  animate={{ strokeDashoffset: 0 }}
-                  transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
-                />
-              </svg>
-            </motion.div>
-            
-            {/* Shutter effect */}
-            <motion.div 
-              className="absolute z-10 inset-0 bg-white"
-              initial={{ clipPath: "inset(50% 50% 50% 50%)" }}
-              animate={{ 
-                clipPath: [
-                  "inset(50% 50% 50% 50%)",
-                  "inset(0% 0% 0% 0%)",
-                  "inset(0% 0% 0% 0%)",
-                  "inset(50% 50% 50% 50%)"
-                ]
-              }}
-              transition={{ 
-                times: [0, 0.3, 0.7, 1],
-                duration: 2.4, 
-                repeat: Infinity, 
-                repeatDelay: 0.8
-              }}
-            />
-            
-            {/* Logo and text */}
-            <div className="z-20 text-center">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-              >
-                <h1 className="text-zinc-800 text-2xl tracking-widest font-light">
-                  KAZE
-                </h1>
-                
-                <div className="relative h-px w-12 bg-zinc-200 mx-auto my-3">
-                  <motion.div
-                    className="absolute inset-0 bg-zinc-300"
-                    initial={{ scaleX: 0, originX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
-                  />
-                </div>
-                
-                <p className="text-zinc-400 text-xs tracking-wider">
-                  瞬きの間に
-                </p>
-              </motion.div>
-            </div>
-            
-            {/* Aperture dot */}
-            <motion.div
-              className="absolute"
-              animate={{ 
-                opacity: [0, 0.6, 0]
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                repeatDelay: 0.4
-              }}
-            >
-              <svg width="8" height="8" viewBox="0 0 8 8">
-                <circle cx="4" cy="4" r="3" fill="#f0f0f0" />
-              </svg>
-            </motion.div>
-            
-            {/* Perspective corner frames - anime style */}
-            <div className="absolute w-48 h-32">
-              {/* Top left */}
-              <motion.div 
-                className="absolute -top-1 -left-1 flex"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.4 }}
-              >
-                <div className="w-3 h-px bg-zinc-200" />
-                <div className="w-px h-3 bg-zinc-200" />
-              </motion.div>
-              
-              {/* Top right */}
-              <motion.div 
-                className="absolute -top-1 -right-1 flex"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.3, duration: 0.4 }}
-              >
-                <div className="w-3 h-px bg-zinc-200" />
-                <div className="w-px h-3 bg-zinc-200 ml-auto" />
-              </motion.div>
-              
-              {/* Bottom left */}
-              <motion.div 
-                className="absolute -bottom-1 -left-1 flex flex-col"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.4, duration: 0.4 }}
-              >
-                <div className="w-px h-3 bg-zinc-200" />
-                <div className="w-3 h-px bg-zinc-200" />
-              </motion.div>
-              
-              {/* Bottom right */}
-              <motion.div 
-                className="absolute -bottom-1 -right-1 flex flex-col items-end"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 0.4 }}
-              >
-                <div className="w-px h-3 bg-zinc-200" />
-                <div className="w-3 h-px bg-zinc-200" />
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
-      )}
+
       {/* Mobile Menu */}
       <div
         className={`fixed inset-0 bg-white dark:bg-zinc-900 z-50 transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
@@ -262,47 +116,47 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 >
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-playfair font-bold relative group">
-            
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-current transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="#home" className="text-sm hover:text-zinc-500 dark:hover:text-zinc-300 transition-colors">
-                Home
+      <header className="fixed top-0 left-0 right-0 z-40 bg-transparent">
+          <div className="container mx-auto px-6 py-6">
+            <div className="flex items-center justify-between">
+              <Link href="/" className="text-xl font-playfair font-light tracking-wider relative group text-white">
+                
+                <span className="absolute -bottom-1 left-0 w-0 h-[0.5px] bg-white/40 transition-all duration-300 group-hover:w-full"></span>
               </Link>
-              <Link
-                href="#portfolio"
-                className="text-sm hover:text-zinc-500 dark:hover:text-zinc-300 transition-colors"
-              >
-                Portfolio
-              </Link>
-              <Link href="#about" className="text-sm hover:text-zinc-500 dark:hover:text-zinc-300 transition-colors">
-                About
-              </Link>
-              <Link href="#services" className="text-sm hover:text-zinc-500 dark:hover:text-zinc-300 transition-colors">
-                Services
-              </Link>
-              <Link href="#contact" className="text-sm hover:text-zinc-500 dark:hover:text-zinc-300 transition-colors">
-                Contact
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setIsDarkMode(!isDarkMode)}
-                className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-              >
-                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              </button>
-              <button onClick={() => setIsMenuOpen(true)} className="md:hidden p-2">
-                <Menu className="h-6 w-6" />
-              </button>
+              <div className="hidden md:flex items-center space-x-10">
+                <Link href="#home" className="text-xs uppercase tracking-wider text-white/80 hover:text-white transition-colors">
+                  Home
+                </Link>
+                <Link
+                  href="#portfolio"
+                  className="text-xs uppercase tracking-wider text-white/80 hover:text-white transition-colors"
+                >
+                  Portfolio
+                </Link>
+                <Link href="#about" className="text-xs uppercase tracking-wider text-white/80 hover:text-white transition-colors">
+                  About
+                </Link>
+                <Link href="#services" className="text-xs uppercase tracking-wider text-white/80 hover:text-white transition-colors">
+                  Services
+                </Link>
+                <Link href="#contact" className="text-xs uppercase tracking-wider text-white/80 hover:text-white transition-colors">
+                  Contact
+                </Link>
+              </div>
+              <div className="flex items-center gap-6">
+                <button
+                  onClick={() => setIsDarkMode(!isDarkMode)}
+                  className="p-2 text-white/80 hover:text-white transition-colors"
+                >
+                  {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                </button>
+                <button onClick={() => setIsMenuOpen(true)} className="md:hidden p-2 text-white">
+                  <Menu className="h-5 w-5" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
       </motion.header>
       {/* Hero Section */}
       <section 
@@ -407,7 +261,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
   </div>
 </section>
   
-<section className="py-20 bg-zinc-50 dark:bg-zinc-900">
+<section className="py-20 bg-[#f0ebe1] dark:bg-zinc-900">
   <div className="container mx-auto px-4">
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div className="lg:col-span-7">
@@ -473,7 +327,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-20">
+      <section id="portfolio" className="py-20 bg-[#f0ebe1]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-12 gap-6">
             <motion.div
@@ -581,7 +435,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
           </div>
 
           {/* Portfolio Section */}
-<section id="portfolio" className="py-20">
+<section id="portfolio" className="py-20 bg-[#f0ebe1]">
   <div className="container mx-auto px-4">
     {/* ... existing portfolio grid ... */}
     
@@ -623,7 +477,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
       </section>
 
       {/* Featured Stories Section */}
-<section className="py-32">
+<section className="py-32 bg-[#f0ebe1]">
   <div className="container mx-auto px-4">
     <div className="grid grid-cols-12 gap-12">
       <motion.div
@@ -694,7 +548,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
       {/* About Section */}
      {/* About Section */}
-<section id="about" className="py-32 relative overflow-hidden">
+<section id="about" className="py-32 relative overflow-hidden bg-[#f0ebe1]">
   <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5"></div>
   <div className="container mx-auto px-4">
     <div className="max-w-6xl mx-auto">
@@ -803,7 +657,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
       {/* Services Section */}
       {/* Services Section */}
-      <section id="services" className="py-28 bg-white dark:bg-zinc-900 relative overflow-hidden">
+      <section id="services" className="py-28 bg-[#f0ebe1] dark:bg-zinc-900 relative overflow-hidden">
   <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5"></div>
   <div className="container mx-auto px-4">
     <div className="max-w-6xl mx-auto">
@@ -887,7 +741,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
       {/* Contact Section */}
       {/* Contact Section */}
-      <section id="contact" className="py-28 bg-zinc-50 dark:bg-zinc-800/50 relative overflow-hidden">
+      <section id="contact" className="py-28 bg-[#f0ebe1] dark:bg-zinc-800/50 relative overflow-hidden">
   <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5"></div>
   <div className="container mx-auto px-4 relative">
     <motion.div
