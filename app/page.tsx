@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, Camera, ChevronDown, Instagram, Mail, Menu, Moon, Sun, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -26,6 +26,12 @@ const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 0.6]) // Be
 const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"]) // More subtle spacing
 
   useEffect(() => {
+
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2500)
+
+    
     if (isDarkMode) {
       document.documentElement.classList.add("dark")
     } else {
@@ -33,14 +39,6 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
     }
   }, [isDarkMode])
 
-  useEffect(() => {
-    // Simulate loading time or wait for assets
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2500) // Adjust time as needed
-    
-    return () => clearTimeout(timer)
-  }, [])
   
   const services = [
     {
@@ -62,83 +60,156 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
   return (
     <main className="min-h-screen">
-<AnimatePresence>
-        {isLoading && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-zinc-900"
-          >
-            <motion.div
+
+{isLoading && (
+        <motion.div 
+          className="fixed inset-0 z-50 bg-white flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="relative flex flex-col items-center justify-center">
+            {/* Film frame */}
+            <motion.div 
+              className="absolute"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col items-center"
+              transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <div className="relative h-24 w-24 mb-12">
-                {/* Animated frame */}
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ 
-                    opacity: [0, 1, 0],
-                    scale: [0.8, 1, 0.8],
-                    rotateZ: [0, 180, 360]
-                  }}
-                  transition={{ 
-                    duration: 2.5, 
-                    repeat: Infinity,
-                    ease: "easeInOut" 
-                  }}
-                  className="absolute inset-0 border border-zinc-400 dark:border-zinc-600"
-                ></motion.div>
-                
-                {/* Inner animated element */}
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ 
-                    opacity: [0, 1, 0],
-                    scale: [0.2, 0.6, 0.2]
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5
-                  }}
-                  className="absolute inset-4 bg-zinc-200 dark:bg-zinc-700"
-                ></motion.div>
-              </div>
-              
-              {/* Text reveal animation */}
-              <div className="overflow-hidden">
-                <motion.p 
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-sm tracking-[0.3em] uppercase font-light text-zinc-500 dark:text-zinc-400 mb-2"
-                >
-              
-                </motion.p>
-              </div>
-              
-              <div className="overflow-hidden">
-                <motion.h2 
-                  initial={{ y: 40 }}
-                  animate={{ y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-                  className="text-3xl md:text-4xl font-playfair tracking-tight"
-                >
-                  Magenta Clouds
-                </motion.h2>
-              </div>
+              <svg width="240" height="160" viewBox="0 0 240 160" fill="none">
+                <rect x="30" y="40" width="180" height="80" stroke="#f5f5f5" strokeWidth="1" />
+                <motion.rect 
+                  x="30" 
+                  y="40" 
+                  width="180" 
+                  height="80" 
+                  stroke="#e0e0e0" 
+                  strokeWidth="1" 
+                  strokeDasharray="240"
+                  initial={{ strokeDashoffset: 240 }}
+                  animate={{ strokeDashoffset: 0 }}
+                  transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
+                />
+              </svg>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            
+            {/* Shutter effect */}
+            <motion.div 
+              className="absolute z-10 inset-0 bg-white"
+              initial={{ clipPath: "inset(50% 50% 50% 50%)" }}
+              animate={{ 
+                clipPath: [
+                  "inset(50% 50% 50% 50%)",
+                  "inset(0% 0% 0% 0%)",
+                  "inset(0% 0% 0% 0%)",
+                  "inset(50% 50% 50% 50%)"
+                ]
+              }}
+              transition={{ 
+                times: [0, 0.3, 0.7, 1],
+                duration: 2.4, 
+                repeat: Infinity, 
+                repeatDelay: 0.8
+              }}
+            />
+            
+            {/* Logo and text */}
+            <div className="z-20 text-center">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+              >
+                <h1 className="text-zinc-800 text-2xl tracking-widest font-light">
+                  KAZE
+                </h1>
+                
+                <div className="relative h-px w-12 bg-zinc-200 mx-auto my-3">
+                  <motion.div
+                    className="absolute inset-0 bg-zinc-300"
+                    initial={{ scaleX: 0, originX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+                  />
+                </div>
+                
+                <p className="text-zinc-400 text-xs tracking-wider">
+                  瞬きの間に
+                </p>
+              </motion.div>
+            </div>
+            
+            {/* Aperture dot */}
+            <motion.div
+              className="absolute"
+              animate={{ 
+                opacity: [0, 0.6, 0]
+              }}
+              transition={{ 
+                duration: 2, 
+                repeat: Infinity,
+                repeatDelay: 0.4
+              }}
+            >
+              <svg width="8" height="8" viewBox="0 0 8 8">
+                <circle cx="4" cy="4" r="3" fill="#f0f0f0" />
+              </svg>
+            </motion.div>
+            
+            {/* Perspective corner frames - anime style */}
+            <div className="absolute w-48 h-32">
+              {/* Top left */}
+              <motion.div 
+                className="absolute -top-1 -left-1 flex"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.4 }}
+              >
+                <div className="w-3 h-px bg-zinc-200" />
+                <div className="w-px h-3 bg-zinc-200" />
+              </motion.div>
+              
+              {/* Top right */}
+              <motion.div 
+                className="absolute -top-1 -right-1 flex"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.3, duration: 0.4 }}
+              >
+                <div className="w-3 h-px bg-zinc-200" />
+                <div className="w-px h-3 bg-zinc-200 ml-auto" />
+              </motion.div>
+              
+              {/* Bottom left */}
+              <motion.div 
+                className="absolute -bottom-1 -left-1 flex flex-col"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.4, duration: 0.4 }}
+              >
+                <div className="w-px h-3 bg-zinc-200" />
+                <div className="w-3 h-px bg-zinc-200" />
+              </motion.div>
+              
+              {/* Bottom right */}
+              <motion.div 
+                className="absolute -bottom-1 -right-1 flex flex-col items-end"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5, duration: 0.4 }}
+              >
+                <div className="w-px h-3 bg-zinc-200" />
+                <div className="w-3 h-px bg-zinc-200" />
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+      )}
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-white dark:bg-zinc-900 z-50 transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
+        className={`fixed inset-0 bg-white dark:bg-zinc-900 z-50 transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+      >
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-end">
             <button onClick={() => setIsMenuOpen(false)} className="p-2">
