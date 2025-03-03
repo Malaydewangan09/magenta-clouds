@@ -157,7 +157,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
       <section 
   id="home" 
   ref={heroRef} 
-  className="relative h-[180vh]"
+  className="relative h-[120vh]"
 >
   <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
     <motion.div 

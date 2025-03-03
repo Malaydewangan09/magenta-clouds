@@ -1,0 +1,94 @@
+"use client"
+
+import { useEffect, useRef, useState } from "react"
+import { useScroll, useTransform } from "framer-motion"
+import { Camera } from "lucide-react"
+
+// Import components
+import Header from "@/components/layout/Header"
+import MobileMenu from "@/components/layout/MobileMenu"
+import HeroSection from "@/components/sections/HeroSection"
+import ServicesSection from "@/components/sections/ServicesSection"
+import AboutSection from "@/components/sections/AboutSection"
+import ContactSection from "@/components/sections/ContactSection"
+import PortfolioSection from "@/components/sections/PortfolioSection"
+// You would continue creating components for other sections
+// import AboutSection from "@/components/sections/AboutSection"
+// import PortfolioSection from "@/components/sections/PortfolioSection"
+// etc.
+
+export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  
+  const heroRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end end"],
+  })
+
+  // Animation controls
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.15, 0.2], [1, 1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+  const textY = useTransform(scrollYProgress, [0, 0.3], [0, 50])
+  const imageBlur = useTransform(scrollYProgress, [0, 0.5], [0, 3]) 
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 0.6])
+  const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "#f0ebe1"
+
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
+  }, [isDarkMode])
+  
+  const services = [
+    {
+      title: "Portrait Photography",
+      description: "Capturing personalities and emotions in stunning portrait sessions.",
+      icon: <Camera className="h-8 w-8" />,
+    },
+    {
+      title: "Event Coverage",
+      description: "Comprehensive photography for weddings, corporate events, and special occasions.",
+      icon: <Camera className="h-8 w-8" />,
+    },
+    {
+      title: "Commercial Photography",
+      description: "High-quality product and brand photography for businesses.",
+      icon: <Camera className="h-8 w-8" />,
+    },
+  ]
+
+  return (
+    <main className="min-h-screen">
+      {/* Layout Components */}
+      <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <Header headerOpacity={headerOpacity} setIsMenuOpen={setIsMenuOpen} />
+      
+      {/* Page Sections */}
+      <HeroSection 
+        heroRef={heroRef}
+        scale={scale}
+        imageBlur={imageBlur}
+        overlayOpacity={overlayOpacity}
+        textOpacity={textOpacity}
+        textY={textY}
+        letterSpacing={letterSpacing}
+      />
+      
+      {/* You would continue adding other section components here */}
+      <AboutSection />
+      <PortfolioSection />
+      <ServicesSection services={services} />
+      <ContactSection />
+      {/* <Footer /> */}
+    </main>
+  )
+}
