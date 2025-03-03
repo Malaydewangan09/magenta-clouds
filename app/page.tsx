@@ -181,7 +181,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
             width: '100%',
             height: '100%',
             border: 'none',
-            transform: 'scale(1.2)'
+            transform: 'scale(1.25)'
           }}
         ></iframe>
       </div>
@@ -453,7 +453,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
             width: '100%',
             height: '100%',
             border: 'none',
-            transform: 'scale(1.1)'
+            transform: 'scale(1.25)'
           }}
         ></iframe>
       <div className="relative z-20 h-full flex flex-col items-center justify-center text-white text-center">
