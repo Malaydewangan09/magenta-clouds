@@ -528,182 +528,204 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
       </section>
 
       {/* Featured Stories Section */}
-<section className="py-20 bg-[#f0ebe1]">
-  <div className="container mx-auto px-4">
-    <div className="grid grid-cols-12 gap-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="col-span-12 lg:col-span-5 relative"
-      >
-        <div className="sticky top-32">
-          <h2 className="text-6xl md:text-7xl font-playfair leading-tight">
-            ALISHA
-            <br />
-            <span className="text-3xl md:text-5xl font-normal italic">&</span>
-            <br />
-            RAHUL
-          </h2>
-          <p className="text-zinc-600 dark:text-zinc-300 text-lg mt-8 mb-6">
-            Amalfi Coast, Italy
-          </p>
-          <Link 
-            href="/stories/alisha-rahul" 
-            className="inline-flex items-center text-lg group"
+      {/* Featured Stories Section - Enhanced with Multiple Stories */}
+      <section className="py-24 bg-[#f0ebe1]">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 group-hover:after:origin-left group-hover:after:scale-x-100">
-              View Story
-            </span>
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />
-          </Link>
-        </div>
-      </motion.div>
+            <span className="block text-sm uppercase tracking-widest text-zinc-500 mb-4 font-mono">03 — Our Stories</span>
+            <h2 className="text-4xl md:text-5xl font-playfair mb-6">Featured Stories</h2>
+            <p className="text-zinc-600 dark:text-zinc-300 text-lg max-w-2xl mx-auto">
+              Explore our most memorable photographic journeys and the stories behind them.
+            </p>
+          </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="col-span-12 lg:col-span-7 space-y-8"
-      >
-        <div className="aspect-[16/10] relative overflow-hidden rounded-lg">
-          <Image
-            src="https://images.unsplash.com/photo-1583939003579-730e3918a45a"
-            alt="Alisha and Rahul Wedding"
-            fill
-            className="object-cover transition-transform duration-700 hover:scale-105"
-          />
-        </div>
-        <div className="grid grid-cols-2 gap-8">
-          <div className="aspect-square relative overflow-hidden rounded-lg">
-            <Image
-              src="https://images.unsplash.com/photo-1519741497674-611481863552"
-              alt="Wedding Details"
-              fill
-              className="object-cover transition-transform duration-700 hover:scale-105"
-            />
-          </div>
-          <div className="aspect-square relative overflow-hidden rounded-lg">
-            <Image
-              src="https://images.unsplash.com/photo-1460364157752-926555421a7e"
-              alt="Wedding Moments"
-              fill
-              className="object-cover transition-transform duration-700 hover:scale-105"
-            />
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-</section>
-
-     {/* About Section */}
-<section id="about" className="py-20 relative overflow-hidden bg-[#f0ebe1]">
-  <div className="absolute inset-0 bg-[url('/images/grain.png')] opacity-5"></div>
-  <div className="container mx-auto px-4">
-    <div className="max-w-6xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative"
-        >
-          <div className="relative">
+          {/* First Featured Story - Large Layout */}
+          <div className="grid grid-cols-12 gap-12 mb-32">
             <motion.div
-              initial={{ height: '100%' }}
-              whileInView={{ height: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="absolute inset-0 bg-zinc-100 dark:bg-zinc-800 z-10"
-            ></motion.div>
-            <Image
-              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop"
-              alt="About Sandeepod"
-              width={600}
-              height={800}
-              className="w-full h-auto rounded-lg"
-            />
-            <div className="absolute -top-4 -left-4 w-32 h-32 border-t-2 border-l-2 border-zinc-900 dark:border-zinc-100"></div>
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 border-b-2 border-r-2 border-zinc-900 dark:border-zinc-100"></div>
-          </div>
-        </motion.div>
+              className="col-span-12 lg:col-span-5 relative"
+            >
+              <div className="sticky top-32">
+                <h2 className="text-6xl md:text-7xl font-playfair leading-tight">
+                  ALISHA
+                  <br />
+                  <span className="text-3xl md:text-5xl font-normal italic">&</span>
+                  <br />
+                  RAHUL
+                </h2>
+                <p className="text-zinc-600 dark:text-zinc-300 text-lg mt-8 mb-6">
+                  Amalfi Coast, Italy
+                </p>
+                <Link 
+                  href="/stories/alisha-rahul" 
+                  className="inline-flex items-center text-lg group"
+                >
+                  <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 group-hover:after:origin-left group-hover:after:scale-x-100">
+                    View Story
+                  </span>
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />
+                </Link>
+              </div>
+            </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative"
-        >
-          <span className="block text-sm uppercase tracking-widest text-zinc-500 mb-4 font-mono">02 — About Us</span>
-          <h2 className="text-4xl md:text-5xl font-playfair mb-8 relative">
-            <span className="relative z-10">The Art of Visual Storytelling</span>
-            <motion.span
-              initial={{ width: 0 }}
-              whileInView={{ width: '40%' }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="absolute bottom-2 left-0 h-3 bg-zinc-100 dark:bg-zinc-800 -z-10"
-              transition={{ duration: 0.8 }}
-            ></motion.span>
-          </h2>
-          <div className="space-y-6">
-            <p className="text-zinc-600 dark:text-zinc-300 text-lg leading-relaxed">
-              With over 10 years of experience in professional photography, sandeepod has developed a unique style
-              that combines technical precision with artistic vision. Specializing in portrait, event, and commercial
-              photography, our work has been featured in numerous publications and exhibitions.
-            </p>
-            <p className="text-zinc-600 dark:text-zinc-300 text-lg leading-relaxed">
-              We believe that every moment tells a story, and our mission is to capture those stories in their most
-              authentic and beautiful form. Our approach is collaborative, working closely with clients to understand
-              their vision and bring it to life through our lens.
-            </p>
+              className="col-span-12 lg:col-span-7 space-y-8"
+            >
+              <div className="aspect-[16/10] relative overflow-hidden rounded-lg">
+                <Image
+                  src="https://images.unsplash.com/photo-1583939003579-730e3918a45a"
+                  alt="Alisha and Rahul Wedding"
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-8">
+                <div className="aspect-square relative overflow-hidden rounded-lg">
+                  <Image
+                    src="https://images.unsplash.com/photo-1519741497674-611481863552"
+                    alt="Wedding Details"
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
+                <div className="aspect-square relative overflow-hidden rounded-lg">
+                  <Image
+                    src="https://images.unsplash.com/photo-1460364157752-926555421a7e"
+                    alt="Wedding Moments"
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
+              </div>
+            </motion.div>
           </div>
-          
-          <div className="mt-12 flex flex-wrap gap-4">
-            <motion.span 
+
+          {/* Second and Third Stories - Side by Side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
+            {/* Second Story */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="group"
+            >
+              <div className="aspect-[4/5] relative overflow-hidden rounded-lg mb-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                <Image
+                  src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc"
+                  alt="Maya & James"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute bottom-0 left-0 p-8 z-20">
+                  <h3 className="text-4xl font-playfair text-white mb-2">MAYA & JAMES</h3>
+                  <p className="text-white/80 mb-6">Santorini, Greece</p>
+                  <Link 
+                    href="/stories/maya-james" 
+                    className="inline-flex items-center text-white group/link"
+                  >
+                    <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-white after:origin-right after:scale-x-0 after:transition-transform after:duration-300 group-hover/link:after:origin-left group-hover/link:after:scale-x-100">
+                      View Story
+                    </span>
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/link:translate-x-2" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Third Story */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="px-6 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm"
+              className="group"
             >
-              Portrait Photography
-            </motion.span>
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="px-6 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm"
-            >
-              Event Coverage
-            </motion.span>
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="px-6 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm"
-            >
-              Commercial Photography
-            </motion.span>
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="px-6 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm"
-            >
-              Fine Art
-            </motion.span>
+              <div className="aspect-[4/5] relative overflow-hidden rounded-lg mb-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                <Image
+                  src="https://images.unsplash.com/photo-1537633552985-df8429e8048b"
+                  alt="Zara & David"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute bottom-0 left-0 p-8 z-20">
+                  <h3 className="text-4xl font-playfair text-white mb-2">ZARA & DAVID</h3>
+                  <p className="text-white/80 mb-6">Bali, Indonesia</p>
+                  <Link 
+                    href="/stories/zara-david" 
+                    className="inline-flex items-center text-white group/link"
+                  >
+                    <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-white after:origin-right after:scale-x-0 after:transition-transform after:duration-300 group-hover/link:after:origin-left group-hover/link:after:scale-x-100">
+                      View Story
+                    </span>
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/link:translate-x-2" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
-      </div>
-    </div>
-  </div>
-</section>
+
+          {/* Fourth Story - Full Width Horizontal */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="group relative aspect-[21/9] overflow-hidden rounded-lg"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/50 z-10 opacity-70 group-hover:opacity-80 transition-opacity"></div>
+            <Image
+              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed"
+              alt="Emma & Thomas"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 flex items-center z-20">
+              <div className="container mx-auto px-8 md:px-16">
+                <div className="max-w-xl">
+                  <h3 className="text-5xl md:text-6xl font-playfair text-white mb-4">EMMA & THOMAS</h3>
+                  <p className="text-white/80 text-lg mb-8">Tuscany, Italy</p>
+                  <Link 
+                    href="/stories/emma-thomas" 
+                    className="inline-flex items-center text-white text-lg group/link"
+                  >
+                    <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-white after:origin-right after:scale-x-0 after:transition-transform after:duration-300 group-hover/link:after:origin-left group-hover/link:after:scale-x-100">
+                      Explore Their Journey
+                    </span>
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/link:translate-x-2" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* View All Stories Button */}
+          <div className="flex justify-center mt-16">
+            <Link 
+              href="/stories" 
+              className="inline-block group relative overflow-hidden rounded-full"
+            >
+              <span className="absolute inset-0 bg-zinc-900 dark:bg-zinc-100 opacity-10 group-hover:opacity-20 transition-opacity duration-300"></span>
+              <span className="relative px-8 py-4 border border-zinc-900/20 dark:border-zinc-100/20 rounded-full inline-flex items-center gap-3 group-hover:border-zinc-900/40 dark:group-hover:border-zinc-100/40 transition-colors duration-300">
+                View All Stories
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Services Section */}
       {/* Services Section */}
