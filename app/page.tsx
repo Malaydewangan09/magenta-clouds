@@ -450,19 +450,20 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
       <div className="absolute inset-4 border border-white/10 z-10 rounded-lg pointer-events-none"></div>
       
       <iframe
-        src="https://www.youtube.com/embed/wja8pfqPcNw?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1"
-        allow="autoplay; fullscreen; picture-in-picture"
-        className="w-screen h-screen object-cover"
-        style={{ 
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          border: 'none',
-          transform: 'scale(1.25)'
-        }}
-      ></iframe>
+  src="https://www.youtube.com/embed/wja8pfqPcNw?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&loop=1&playlist=wja8pfqPcNw"
+  allow="autoplay; fullscreen; picture-in-picture"
+  className="w-screen h-screen object-cover"
+  style={{ 
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    border: 'none',
+    transform: 'scale(1.25)'
+  }}
+></iframe>
+
       
       {/* Content with improved typography and layout */}
       <div className="relative z-20 h-full flex flex-col items-center justify-center text-white text-center px-4">
