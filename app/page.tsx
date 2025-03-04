@@ -205,9 +205,13 @@ useEffect(() => {
   transition={{ duration: 1 }}
   className="absolute inset-0 w-full h-full"
 >
-<iframe
-  src="https://www.youtube.com/embed/wja8pfqPcNw?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&loop=1&playlist=wja8pfqPcNw"
-  allow="autoplay; fullscreen; picture-in-picture"
+
+<video
+autoPlay
+loop
+muted
+playsInline
+  src="/videos/hero.mp4"
   className="w-screen h-screen object-cover"
   style={{ 
     position: 'absolute',
@@ -216,11 +220,11 @@ useEffect(() => {
     width: '100%',
     height: '100%',
     border: 'none',
-    transform: 'scale(1.25)',
+    transform: 'scale(1.23)',
     objectFit: 'cover',
     objectPosition: 'center center'
   }}
-></iframe>
+></video>
 </motion.div>
 
       <motion.div 
