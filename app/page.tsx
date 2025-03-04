@@ -26,6 +26,41 @@ const imageBlur = useTransform(scrollYProgress, [0, 0.5], [0, 3])
 const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 0.6])
 const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
 
+useEffect(() => {
+  const handleResize = () => {
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach(iframe => {
+      // Get viewport dimensions
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const viewportRatio = viewportWidth / viewportHeight;
+      
+      // Base scale calculation - inversely proportional to screen width
+      // This creates a smooth curve where smaller screens get larger scaling
+      const baseScale = 4.5 - (viewportWidth / 500);
+      
+      // Adjust for aspect ratio (taller/narrower screens need more scaling)
+      const aspectRatioFactor = Math.max(0.8, Math.min(1.2, 1 / viewportRatio));
+      
+      // Calculate final scale with constraints
+      const finalScale = Math.max(1.2, Math.min(4.5, baseScale * aspectRatioFactor));
+      
+      // Apply the calculated scale
+      iframe.style.transform = `scale(${finalScale})`;
+    });
+  };
+  
+  // Initial call
+  handleResize();
+  
+  // Add event listener
+  window.addEventListener('resize', handleResize);
+  
+  // Cleanup
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
+
   useEffect(() => {
 
     document.body.style.backgroundColor = "#f0ebe1"
@@ -164,7 +199,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
       style={{ scale, filter: `blur(${imageBlur}px)` }}
       className="absolute inset-0 z-0 w-full h-full"
     >
-      <motion.div
+<motion.div
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ duration: 1 }}
@@ -181,7 +216,9 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
     width: '100%',
     height: '100%',
     border: 'none',
-    transform: 'scale(1.25)'
+    transform: 'scale(1.25)',
+    objectFit: 'cover',
+    objectPosition: 'center center'
   }}
 ></iframe>
 </motion.div>
