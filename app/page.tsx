@@ -741,7 +741,7 @@ playsInline
             <div className="absolute inset-0 flex items-center z-20">
               <div className="container mx-auto px-8 md:px-16">
                 <div className="max-w-xl">
-                  <h3 className="text-5xl md:text-6xl font-playfair text-white mb-4">TANYA & SHASHANK</h3>
+                  <h3 className="text-5xl md:text-5xl font-playfair text-white mb-4">TANYA & SHASHANK</h3>
                   <p className="text-white/80 text-lg mb-8"></p>
                   <Link 
                     href="/stories/emma-thomas" 
