@@ -508,24 +508,6 @@ playsInline
     objectFit: 'cover',
     objectPosition: 'center center'
   }}
-></video><video
-autoPlay
-loop
-muted
-playsInline
-  src="/hero.mp4"
-  className="w-screen h-screen object-cover"
-  style={{ 
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    border: 'none',
-    transform: 'scale(1.23)',
-    objectFit: 'cover',
-    objectPosition: 'center center'
-  }}
 ></video>
 
       
@@ -593,7 +575,7 @@ playsInline
 
       {/* Featured Stories Section */}
       {/* Featured Stories Section - Enhanced with Multiple Stories */}
-      <section className="py-24 bg-[#f0ebe1]">
+      <section className="py-10 bg-[#f0ebe1]">
         <div className="container mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
