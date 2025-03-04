@@ -171,19 +171,19 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
   className="absolute inset-0 w-full h-full"
 >
 <iframe
-    src="https://www.youtube.com/embed/wja8pfqPcNw?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1"
-    allow="autoplay; fullscreen; picture-in-picture"
-    className="w-screen h-screen object-cover"
-    style={{ 
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      border: 'none',
-      transform: 'scale(1.25)'
-    }}
-  ></iframe>
+  src="https://www.youtube.com/embed/wja8pfqPcNw?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&loop=1&playlist=wja8pfqPcNw"
+  allow="autoplay; fullscreen; picture-in-picture"
+  className="w-screen h-screen object-cover"
+  style={{ 
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    border: 'none',
+    transform: 'scale(1.25)'
+  }}
+></iframe>
 </motion.div>
 
       <motion.div 
