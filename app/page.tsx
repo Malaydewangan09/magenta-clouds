@@ -733,7 +733,7 @@ playsInline
           >
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/50 z-10 opacity-70 group-hover:opacity-80 transition-opacity"></div>
             <Image
-              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed"
+              src="/images/magazines/1.jpg"
               alt="Emma & Thomas"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -741,8 +741,8 @@ playsInline
             <div className="absolute inset-0 flex items-center z-20">
               <div className="container mx-auto px-8 md:px-16">
                 <div className="max-w-xl">
-                  <h3 className="text-5xl md:text-6xl font-playfair text-white mb-4">EMMA & THOMAS</h3>
-                  <p className="text-white/80 text-lg mb-8">Tuscany, Italy</p>
+                  <h3 className="text-5xl md:text-6xl font-playfair text-white mb-4">TANYA & SHASHANK</h3>
+                  <p className="text-white/80 text-lg mb-8"></p>
                   <Link 
                     href="/stories/emma-thomas" 
                     className="inline-flex items-center text-white text-lg group/link"
