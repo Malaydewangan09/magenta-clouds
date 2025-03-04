@@ -211,7 +211,7 @@ autoPlay
 loop
 muted
 playsInline
-  src="/videos/hero.mp4"
+  src="/hero.mp4"
   className="w-screen h-screen object-cover"
   style={{ 
     position: 'absolute',
