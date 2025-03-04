@@ -490,9 +490,12 @@ playsInline
       {/* Video frame with subtle border */}
       <div className="absolute inset-4 border border-white/10 z-10 rounded-lg pointer-events-none"></div>
       
-      <iframe
-  src="https://www.youtube.com/embed/wja8pfqPcNw?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&loop=1&playlist=wja8pfqPcNw"
-  allow="autoplay; fullscreen; picture-in-picture"
+      <video
+autoPlay
+loop
+muted
+playsInline
+  src="/hero.mp4"
   className="w-screen h-screen object-cover"
   style={{ 
     position: 'absolute',
@@ -501,9 +504,29 @@ playsInline
     width: '100%',
     height: '100%',
     border: 'none',
-    transform: 'scale(1.25)'
+    transform: 'scale(1.23)',
+    objectFit: 'cover',
+    objectPosition: 'center center'
   }}
-></iframe>
+></video><video
+autoPlay
+loop
+muted
+playsInline
+  src="/hero.mp4"
+  className="w-screen h-screen object-cover"
+  style={{ 
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    border: 'none',
+    transform: 'scale(1.23)',
+    objectFit: 'cover',
+    objectPosition: 'center center'
+  }}
+></video>
 
       
       {/* Content with improved typography and layout */}
