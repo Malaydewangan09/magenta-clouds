@@ -37,10 +37,10 @@ useEffect(() => {
       
       // Base scale calculation - inversely proportional to screen width
       // This creates a smooth curve where smaller screens get larger scaling
-      const baseScale = 4.3 - (viewportWidth / 500);
+      const baseScale = 4.2 - (viewportWidth / 500);
       
       // Adjust for aspect ratio (taller/narrower screens need more scaling)
-      const aspectRatioFactor = Math.max(0.8, Math.min(1.2, 1 / viewportRatio));
+      const aspectRatioFactor = Math.max(0.83, Math.min(1.2, 1 / viewportRatio));
       
       // Calculate final scale with constraints
       const finalScale = Math.max(1.2, Math.min(4.5, baseScale * aspectRatioFactor));
