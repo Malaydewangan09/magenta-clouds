@@ -164,22 +164,28 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
       style={{ scale, filter: `blur(${imageBlur}px)` }}
       className="absolute inset-0 z-0 w-full h-full"
     >
-      <div className="absolute inset-0 w-full h-full">
-        <iframe
-          src="https://player.vimeo.com/video/1061717081?h=661cbd3b11&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          allow="autoplay; fullscreen; picture-in-picture"
-          className="w-screen h-screen object-cover"
-          style={{ 
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            border: 'none',
-            transform: 'scale(1.25)'
-          }}
-        ></iframe>
-      </div>
+      <motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1 }}
+  className="absolute inset-0 w-full h-full"
+>
+<iframe
+    src="https://www.youtube.com/embed/wja8pfqPcNw?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1"
+    allow="autoplay; fullscreen; picture-in-picture"
+    className="w-screen h-screen object-cover"
+    style={{ 
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      border: 'none',
+      transform: 'scale(1.25)'
+    }}
+  ></iframe>
+</motion.div>
+
       <motion.div 
         style={{ opacity: overlayOpacity }}
         className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"
@@ -444,7 +450,7 @@ const letterSpacing = useTransform(scrollYProgress, [0, 0.3], ["0em", "0.15em"])
       <div className="absolute inset-4 border border-white/10 z-10 rounded-lg pointer-events-none"></div>
       
       <iframe
-        src="https://player.vimeo.com/video/1061717081?h=661cbd3b11&background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+        src="https://www.youtube.com/embed/wja8pfqPcNw?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1"
         allow="autoplay; fullscreen; picture-in-picture"
         className="w-screen h-screen object-cover"
         style={{ 
