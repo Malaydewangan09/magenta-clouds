@@ -92,7 +92,7 @@ useEffect(() => {
   ]
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen font-didot">
 
 
       {/* Mobile Menu */}
@@ -105,7 +105,7 @@ useEffect(() => {
               <X className="h-8 w-8" />
             </button>
           </div>
-          <div className="flex flex-col items-center justify-center h-[80vh] gap-8 text-3xl font-playfair">
+          <div className="flex flex-col items-center justify-center h-[80vh] gap-8 text-3xl font-didot">
             <Link
               href="#home"
               onClick={() => setIsMenuOpen(false)}
@@ -154,7 +154,7 @@ useEffect(() => {
       <header className="fixed top-0 left-0 right-0 z-40 bg-transparent">
           <div className="container mx-auto px-6 py-6">
             <div className="flex items-center justify-between">
-              <Link href="/" className="text-xl font-playfair font-light tracking-wider relative group text-white">
+              <Link href="/" className="text-xl font-didot font-light tracking-wider relative group text-white">
                 
                 <span className="absolute -bottom-1 left-0 w-0 h-[0.5px] bg-white/40 transition-all duration-300 group-hover:w-full"></span>
               </Link>
@@ -245,7 +245,7 @@ playsInline
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-white/60 tracking-[0.3em] text-xs md:text-sm font-light mb-8 md:mb-12"
+            className="text-white/60 tracking-[0.3em] text-xs md:text-sm font-light mb-8 md:mb-12 font-didot"
           >
             VISUAL STORYTELLING
           </motion.p>
@@ -256,14 +256,14 @@ playsInline
           >
             <motion.h1 
               style={{ letterSpacing }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[7rem] font-inter font-light text-white/95 leading-[1.1] md:leading-[0.95] tracking-[-0.02em] md:tracking-[-0.04em]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[6rem] font-didot font-light text-white/80 leading-[1.1] md:leading-[0.95] tracking-[-0.02em] md:tracking-[-0.04em]"
             >
-              Magenta
+              MAGENTA
               <motion.span 
                 style={{ opacity: textOpacity }}
-                className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-inter font-extralight mt-4 md:mt-6 text-white/80 tracking-tight"
+                className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-didot font-extralight mt-4 md:mt-6 text-white/80 tracking-loose"
               >
-                Clouds
+                CLOUDS
               </motion.span>
             </motion.h1>
 
@@ -278,7 +278,7 @@ playsInline
                 className="inline-flex items-center gap-3 md:gap-4 text-white/80 hover:text-white transition-all group"
               >
                 <span className="h-[1px] w-8 md:w-12 bg-white/40 group-hover:w-16 md:group-hover:w-24 transition-all"></span>
-                <span className="text-xs md:text-sm tracking-[0.3em] uppercase font-light">Explore Work</span>
+                <span className="text-xs md:text-sm tracking-[0.3em] uppercase font-light font-didot">Explore Work</span>
                 <span className="h-[1px] w-8 md:w-12 bg-white/40 group-hover:w-16 md:group-hover:w-24 transition-all"></span>
               </Link>
             </motion.div>
@@ -311,7 +311,7 @@ playsInline
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-playfair mb-8"
+          className="text-4xl md:text-6xl font-didot mb-8"
         >
           A MODERN APPROACH
           <br />
@@ -527,7 +527,7 @@ playsInline
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-5xl md:text-7xl font-playfair mb-8 tracking-wide"
+          className="text-5xl md:text-7xl font-didot mb-8 tracking-wide"
         >
           SOUL<span className="text-white/70">+</span>CINEMA
         </motion.h2>
@@ -584,7 +584,7 @@ playsInline
             className="text-center mb-16"
           >
             <span className="block text-sm uppercase tracking-widest text-zinc-500 mb-4 font-mono">03 — Our Stories</span>
-            <h2 className="text-4xl md:text-5xl font-playfair mb-6">Featured Stories</h2>
+            <h2 className="text-4xl md:text-5xl font-didot mb-6">Featured Stories</h2>
             <p className="text-zinc-600 dark:text-zinc-300 text-lg max-w-2xl mx-auto">
               Explore our most memorable photographic journeys and the stories behind them.
             </p>
@@ -599,7 +599,7 @@ playsInline
               className="col-span-12 lg:col-span-5 relative"
             >
               <div className="sticky top-32">
-                <h2 className="text-6xl md:text-7xl font-playfair leading-tight">
+                <h2 className="text-6xl md:text-7xl font-didot leading-tight">
                   ALISHA
                   <br />
                   <span className="text-3xl md:text-5xl font-normal italic">&</span>
@@ -675,7 +675,7 @@ playsInline
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 left-0 p-8 z-20">
-                  <h3 className="text-4xl font-playfair text-white mb-2">MAYA & JAMES</h3>
+                  <h3 className="text-4xl font-didot text-white mb-2">MAYA & JAMES</h3>
                   <p className="text-white/80 mb-6">Santorini, Greece</p>
                   <Link 
                     href="/stories/maya-james" 
@@ -707,7 +707,7 @@ playsInline
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 left-0 p-8 z-20">
-                  <h3 className="text-4xl font-playfair text-white mb-2">ZARA & DAVID</h3>
+                  <h3 className="text-4xl font-didot text-white mb-2">ZARA & DAVID</h3>
                   <p className="text-white/80 mb-6">Bali, Indonesia</p>
                   <Link 
                     href="/stories/zara-david" 
@@ -741,7 +741,7 @@ playsInline
             <div className="absolute inset-0 flex items-center z-20">
               <div className="container mx-auto px-8 md:px-16">
                 <div className="max-w-xl">
-                  <h3 className="text-5xl md:text-5xl font-playfair text-white mb-4">TANYA & SHASHANK</h3>
+                  <h3 className="text-5xl md:text-5xl font-didot text-white mb-4">TANYA & SHASHANK</h3>
                   <p className="text-white/80 text-lg mb-8"></p>
                   <Link 
                     href="/stories/emma-thomas" 
@@ -785,7 +785,7 @@ playsInline
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="text-5xl md:text-6xl font-playfair mb-8 relative inline-block"
+    className="text-5xl md:text-6xl font-didot mb-8 relative inline-block"
   >
     <span className="absolute -left-6 top-0 text-zinc-200 dark:text-zinc-800 -z-10 font-sans text-8xl opacity-60">S</span>
     Our Services
@@ -871,7 +871,7 @@ playsInline
       <div className="text-center mb-20">
   <motion.div className="inline-block mb-8">
     <span className="block text-sm uppercase tracking-widest text-zinc-500 mb-2">Let&apos;s Talk</span>
-    <h2 className="text-4xl md:text-5xl font-playfair relative">
+    <h2 className="text-4xl md:text-5xl font-didot relative">
       <span className="relative z-10">Get In Touch</span>
       <motion.span
         initial={{ width: 0 }}
@@ -994,7 +994,7 @@ playsInline
         className="mb-16 relative"
       >
         <span className="block text-sm uppercase tracking-widest text-zinc-500 mb-4">Ready to capture your story?</span>
-        <h3 className="text-6xl md:text-8xl font-playfair mb-8">Let&apos;s Create Magic</h3>
+        <h3 className="text-6xl md:text-8xl font-didot mb-8">Let&apos;s Create Magic</h3>
         <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
           Every moment is a canvas waiting to be painted with light. Let&apos;s collaborate and turn your vision into timeless memories.
         </p>
@@ -1061,7 +1061,7 @@ playsInline
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
         
         <p className="text-zinc-500 text-sm flex items-center gap-2">
-          <span className="font-playfair">sandeepod</span>
+          <span className="font-didot">sandeepod</span>
           <span className="block w-1 h-1 rounded-full bg-zinc-700"></span>
           <span>© {new Date().getFullYear()}</span>
         </p>

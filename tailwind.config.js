@@ -11,6 +11,7 @@ module.exports = {
       fontFamily: {
         playfair: ["var(--font-playfair)"],
         inter: ["var(--font-inter)"],
+        didot: ['"GFS Didot"', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
