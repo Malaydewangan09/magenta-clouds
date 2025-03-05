@@ -256,7 +256,7 @@ playsInline
           >
             <motion.h1 
               style={{ letterSpacing }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[6rem] font-didot font-light text-white/80 leading-[1.1] md:leading-[0.95] tracking-[-0.02em] md:tracking-[-0.04em]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-didot font-light text-white/80 leading-[1.1] md:leading-[0.95] tracking-[-0.02em] md:tracking-[-0.04em]"
             >
               MAGENTA
               <motion.span 
